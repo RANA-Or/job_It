@@ -26,6 +26,7 @@ public class adapterClass extends RecyclerView.Adapter<adapterClass.MyViewHolder
 
     ArrayList<Data> dataList;
     private OnItemClickListener mListener;
+    public static String email;
 
     public interface Callbacks {
         public void onButtonClicked(String titleKey);
@@ -35,6 +36,7 @@ public class adapterClass extends RecyclerView.Adapter<adapterClass.MyViewHolder
 
     public adapterClass(Context context, ArrayList<Data> dataList) {
         this.dataList = dataList;
+        email = "";
     }
 
     public interface OnItemClickListener {
@@ -75,6 +77,7 @@ public class adapterClass extends RecyclerView.Adapter<adapterClass.MyViewHolder
                 intent.putExtra("skills", dataList.get(position).getSkills());
                 intent.putExtra("salary", dataList.get(position).getSalary());
                 intent.putExtra("email", dataList.get(position).getEmail());
+                email = dataList.get(position).getEmail();
                 intent.putExtra("contactName", dataList.get(position).getContactName());
                 intent.putExtra("location", dataList.get(position).getLocation());
                 v.getContext().startActivity(intent);

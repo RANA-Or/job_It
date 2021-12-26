@@ -113,6 +113,19 @@ public class employerRegister extends AppCompatActivity {
     private void registerEmployer(String fname, String lname, String email, String password) {
         fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {
+                databaseReference.child("users").child(fAuth.getCurrentUser().getUid()).child("email").setValue(eMail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            Toast.makeText(employerRegister.this, "SignUp Success", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(employerRegister.this , "Failure in saving data " + e.getMessage() , Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 FirebaseUser fuser = fAuth.getCurrentUser();
                 //send verification email
@@ -151,5 +164,10 @@ public class employerRegister extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void addToChatList(String email){
+
+
     }
 }

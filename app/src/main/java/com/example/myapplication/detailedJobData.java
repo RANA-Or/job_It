@@ -93,5 +93,18 @@ public class detailedJobData extends AppCompatActivity {
         dContentName.setText(contactName);
         dLocation.setText(location);
 
+        goToChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendUser();
+            }
+        });
+
+
+    }
+
+    public void sendUser(){
+        Intent intent = new Intent(detailedJobData.this , ChatListActivity.class);
+        startActivity(intent);
     }
 }
