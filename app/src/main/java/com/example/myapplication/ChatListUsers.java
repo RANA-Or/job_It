@@ -22,70 +22,53 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ChatListActivity extends AppCompatActivity {
-
+public class ChatListUsers extends AppCompatActivity {
 
     ListView userListView;
     ArrayAdapter arrayAdapter;
-    static ArrayList<String> users = new ArrayList<>();
+    ArrayList<String> users = new ArrayList<>();
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
-    static boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_list);
+        setContentView(R.layout.activity_chat_list_users);
 
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        userListView = findViewById(R.id.userListView);
+        userListView = findViewById(R.id.userListView1);
 
-        Intent intent = getIntent();
-
-        String otherEmail = intent.getStringExtra("email");
-        String email = mAuth.getCurrentUser().getEmail();
-
-        databaseReference.child("chats").child("users").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            if (dataSnapshot.child("sender").getValue().toString().equals(email)) {
-                                users.add(dataSnapshot.child("receiver").getValue().toString());
-                            }
-                            if (dataSnapshot.child("receiver").getValue().toString().equals(email)) {
-                                users.add(dataSnapshot.child("sender").getValue().toString());
-                            }
-                    }
-                    for(int i = 0; i < users.size() ; ++i){
-                        for(int j = 0; j < users.size(); ++j){
-                            if(j!=i){
-                                if(users.get(i).equals(users.get(j))){
-                                    users.remove(j);
-                                }
+                    for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        if(!dataSnapshot.child("email").getValue().toString().equals(mAuth.getCurrentUser().getEmail())){
+                            if(dataSnapshot.child("email").getValue().toString().equals(adapterClass.email)){
+                                Toast.makeText(ChatListUsers.this ,adapterClass.email , Toast.LENGTH_SHORT ).show();
+                                users.add(dataSnapshot.child("email").getValue().toString());
                             }
                         }
                     }
-                    arrayAdapter = new ArrayAdapter(ChatListActivity.this , android.R.layout.simple_list_item_1 , users);
+                    arrayAdapter = new ArrayAdapter(ChatListUsers.this , android.R.layout.simple_list_item_1 , users);
                     userListView.setAdapter(arrayAdapter);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ChatListActivity.this , "Failed to load user !" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChatListUsers.this , "Failed to load user !" , Toast.LENGTH_SHORT).show();
             }
         });
 
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ChatListActivity.this , ChatActivity.class);
+                Intent intent = new Intent(ChatListUsers.this , Chat.class);
                 intent.putExtra("email" , users.get(position));
                 startActivity(intent);
             }
         });
     }
-
 }

@@ -27,6 +27,17 @@
         app:menu="@menu/employer_bottom_menu"
         />
 
+    <Button
+        android:id="@+id/chatB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="chats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="597dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -12,8 +12,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +42,7 @@ public class detailedJobData extends AppCompatActivity {
     RecyclerView recyclerView;
     adapterClass adapterClass;
     ArrayList<Data> arrayListCopy;
+    ListView userListView;
 
     private TextView dTitle;
     private TextView dDate;
@@ -60,6 +63,7 @@ public class detailedJobData extends AppCompatActivity {
         fauth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
         email1 = findViewById(R.id.emailEditText);
+        userListView = findViewById(R.id.userListView1);
 
 
         dTitle = (TextView) findViewById(R.id.job_detail_title);
@@ -104,7 +108,8 @@ public class detailedJobData extends AppCompatActivity {
     }
 
     public void sendUser(){
-        Intent intent = new Intent(detailedJobData.this , ChatListActivity.class);
+
+        Intent intent = new Intent(detailedJobData.this , ChatListUsers.class);
         startActivity(intent);
     }
 }
