@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,9 +11,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Model.Data;
+import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,10 +23,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class insertEmployerPost extends AppCompatActivity {
 
@@ -34,13 +42,19 @@ public class insertEmployerPost extends AppCompatActivity {
     private EditText job_location;
     private EditText job_email;
     private EditText job_contact_name;
-
     private Button button_post_job;
 
-    FirebaseDatabase firebaseDatabase;
-    FirebaseAuth fauth;
-    DatabaseReference databaseReference;
-    Data data;
+    private CircleImageView postImage;
+
+    private ProgressDialog progressDialog;
+
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseAuth fauth;
+    private DatabaseReference databaseReference;
+    private StorageReference storageReference;//for image
+    private Uri uri;
+
+    private Data data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +63,15 @@ public class insertEmployerPost extends AppCompatActivity {
 
 
         // initializing our edittext and button
-        job_title = findViewById(R.id.job_title);
-        job_desc = findViewById(R.id.job_desc);
-        job_date = findViewById(R.id.job_date);
-        job_salary = findViewById(R.id.job_salary);
-        job_email = findViewById(R.id.job_email1);
-        job_location = findViewById(R.id.job_loc);
-        job_contact_name = findViewById(R.id.job_content_memeber1);
-        button_post_job = findViewById(R.id.job_post);
+        job_title = findViewById(R.id.insert_job_title);
+        job_desc = findViewById(R.id.insert_job_desc);
+        job_date = findViewById(R.id.insert_job_date);
+        job_salary = findViewById(R.id.insert_job_salary);
+        job_email = findViewById(R.id.insert_job_salary);
+        job_location = findViewById(R.id.insert_job_place);
+        job_contact_name = findViewById(R.id.insert_job_conName);
+        button_post_job = findViewById(R.id.new_post_btn);
+        postImage = findViewById(R.id.insert_job_image);
 
 
         //Present date by specific format
@@ -79,6 +94,8 @@ public class insertEmployerPost extends AppCompatActivity {
         // initializing our object
         // class variable.
         data = new Data();
+
+        storageReference = FirebaseStorage.getInstance().getReference();
 
 
         // adding on click listener for our button.
@@ -119,6 +136,19 @@ public class insertEmployerPost extends AppCompatActivity {
             }
         });
 
+        postImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.Companion.with(insertEmployerPost.this)
+                        .crop()	    			//Crop image(Optional), Check Customization for more option
+                        .cropOval()	    		//Allow dimmed layer to have a circle inside
+                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start();
+            }
+        });
+
+
     }
 
     private void addDatatoFirebase(String title, String description, String dateJob, String salary, String date, String timeNow, String location, String contactName, String email) {
@@ -154,7 +184,27 @@ public class insertEmployerPost extends AppCompatActivity {
                 Toast.makeText(insertEmployerPost.this, "Fail to add data " + error, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        uri = data.getData();
+        postImage.setImageURI(uri);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading File...");
+        progressDialog.show();
+
+        SimpleDateFormat ISO_8601_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
+        String fileName = ISO_8601_FORMAT.format(new Date())+".jpeg";
+
+
+
+
+    }
+
     public void openEmployerPage(){
         Intent intent = new Intent(this , employerPage.class);
         startActivity(intent);

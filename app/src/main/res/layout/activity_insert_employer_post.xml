@@ -1,322 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".insertEmployerPost">
 
 
-    <ScrollView
+    <ImageView
+        android:id="@+id/imageLogo"
         android:layout_width="match_parent"
-        android:layout_height="490dp">
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/jobit3" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bla"
+        android:layout_below="@+id/imageLogo"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="תפקיד :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/bla1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bla"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="מיקום :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+    <TextView
+        android:id="@+id/bla2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bla1"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="תאריך :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/bla3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bla2"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="שכר :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/bla4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bla3"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="איש קשר :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/bla5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bla4"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="מייל :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/bla6"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bla5"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="תיאור :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+
+    <EditText
+        android:id="@+id/insert_job_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bla"
+        android:layout_toEndOf="@+id/bla"
+
 
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bla1"
+        android:layout_toEndOf="@+id/bla1"
+        android:id="@+id/insert_job_place"
+
+        />
+
+    <EditText
+        android:id="@+id/insert_job_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bla2"
+        android:layout_toEndOf="@+id/bla2"
+
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bla3"
+        android:layout_toEndOf="@+id/bla3"
+        android:id="@+id/insert_job_salary"
+
+
+        />
+
+    <EditText
+        android:id="@+id/insert_job_conName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bla4"
+        android:layout_toEndOf="@+id/bla4"
+
+        />
+
+    <EditText
+        android:id="@+id/insert_job_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/bla5"
+        android:layout_toEndOf="@id/bla5"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/insert_job_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bla5"
+        android:layout_alignBaseline="@id/bla6"
+        android:layout_toEndOf="@id/bla6"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:maxLines="4" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:orientation="vertical">
-
-
-            <ImageView
-                android:id="@+id/profilePic1"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                tools:srcCompat="@drawable/jobit3" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-
-                        android:padding="7dp"
-                        android:text="Job Title:"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <EditText
-                        android:id="@+id/job_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-
-                        tools:ignore="SpeakableTextPresentCheck" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-
-                        android:padding="7dp"
-                        android:text="Job Description:"
-
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <EditText
-                        android:id="@+id/job_desc"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:inputType="textMultiLine"
-                        tools:ignore="SpeakableTextPresentCheck" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                    <TextView
-                        android:id="@+id/location2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-
-
-                        android:maxLines="2"
-                        android:padding="10dp"
-                        android:text="Location:"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3">
-
-                    <EditText
-                        android:id="@+id/job_loc"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginBottom="0dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-
-                        android:padding="7dp"
-                        android:text="job date :"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <EditText
-                        android:id="@+id/job_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-
-                        android:padding="7dp"
-                        android:text="Salary:"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <EditText
-                        android:id="@+id/job_salary"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                    <TextView
-                        android:id="@+id/contactMember1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-
-                        android:maxLines="2"
-                        android:padding="10dp"
-                        android:text="Contact member's name:"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <EditText
-                        android:id="@+id/job_content_memeber1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="SpeakableTextPresentCheck" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2">
-
-                    <TextView
-                        android:id="@+id/email1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:maxLines="2"
-                        android:padding="10dp"
-                        android:text="E-mail:"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3">
-
-                    <EditText
-                        android:id="@+id/job_email1"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
 
     <Button
-        android:id="@+id/job_post"
+        android:id="@+id/new_post_btn"
         android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:layout_margin="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="העלה מודעה"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginStart="40dp"
 
-        android:text="Post It Now!"
-        android:textAllCaps="false"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/white" />
 
-</LinearLayout>
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/insert_job_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@+id/new_post_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/profile_icon"
+        app:civ_border_color="@color/icon_dark_blue"
+        app:civ_border_width="2dp"
+        />
+
+
+
+
+</RelativeLayout>
