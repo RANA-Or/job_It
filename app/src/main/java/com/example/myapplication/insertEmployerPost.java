@@ -62,7 +62,7 @@ public class insertEmployerPost extends AppCompatActivity {
         setContentView(R.layout.activity_insert_employer_post);
 
 
-        // initializing our edittext and button
+        // initilizing our edittext and button
         job_title = findViewById(R.id.insert_job_title);
         job_desc = findViewById(R.id.insert_job_desc);
         job_date = findViewById(R.id.insert_job_date);
