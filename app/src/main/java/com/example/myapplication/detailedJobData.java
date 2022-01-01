@@ -91,7 +91,7 @@ public class detailedJobData extends AppCompatActivity {
     }
 
     public void sendUser(){
-        Intent intent = new Intent(detailedJobData.this , ChatListActivity.class);
+        Intent intent = new Intent(detailedJobData.this , ChatListUsers.class);
         startActivity(intent);
     }
 }

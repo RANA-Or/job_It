@@ -1,9 +1,15 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
+import android.os.Bundle;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -33,7 +39,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class ChatActivity extends AppCompatActivity {
+
+public class Chat extends AppCompatActivity {
 
     EditText message;
     Button send;
@@ -44,14 +51,14 @@ public class ChatActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     DatabaseReference ref;
     Map<FirebaseUser, Map<String , Object> > messagesData;
-    static int count ;
-    static int counter = 1;
+    int count;
+    int counter = 1;
     boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_chat2);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel = new NotificationChannel("My notify" , "My notify" , NotificationManager.IMPORTANCE_DEFAULT);
@@ -62,9 +69,9 @@ public class ChatActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        message = findViewById(R.id.message);
-        send = findViewById(R.id.send);
-        chatListView = findViewById(R.id.chatListView);
+        message = findViewById(R.id.message1);
+        send = findViewById(R.id.send1);
+        chatListView = findViewById(R.id.chatListView1);
 
         Intent intent = getIntent();
 
@@ -77,7 +84,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(message.getText().toString().isEmpty()){
-                    Toast.makeText(ChatActivity.this , "Write a Message!" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Chat.this , "Write a Message!" , Toast.LENGTH_SHORT).show();
                 }else{
                     databaseReference.child("chats").child("users").addValueEventListener(new ValueEventListener() {
                         @Override
@@ -91,6 +98,10 @@ public class ChatActivity extends AppCompatActivity {
                                         count = Integer.parseInt(Objects.requireNonNull(dataSnapshot.getKey()));
                                         flag = true;
                                     }
+                                    else{
+                                        counter++;
+                                        count = (int) (snapshot.getChildrenCount() + counter);
+                                    }
                                 }
                             }
                         }
@@ -99,15 +110,17 @@ public class ChatActivity extends AppCompatActivity {
 
                         }
                     });
+                    //lkk
 
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(ChatActivity.this , "My notify");
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(Chat.this , "My notify");
                     builder.setContentTitle("JobIt");
                     builder.setContentText("you have a new message from " + otherEmail);
                     builder.setSmallIcon(R.drawable.jobit);
                     builder.setAutoCancel(true);
 
-                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(ChatActivity.this);
-                    managerCompat.notify(0 , builder.build());
+                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Chat.this);
+                    managerCompat.notify(1 , builder.build());
+
 
                     Map<String , Object> messageData = new HashMap<>();
                     messageData.put("sender" , email);
@@ -117,6 +130,19 @@ public class ChatActivity extends AppCompatActivity {
                     databaseReference.child("messages").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(!flag){
+                                databaseReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        counter++;
+                                        count = (int) (snapshot.getChildrenCount() + counter);
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
                             databaseReference.child("chats").child("users").child(String.valueOf(count)).setValue(messageData).
                                     addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -130,7 +156,7 @@ public class ChatActivity extends AppCompatActivity {
                                     }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(ChatActivity.this , "Error in sending message" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Chat.this , "Error in sending message" + e.getMessage(),Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -160,7 +186,7 @@ public class ChatActivity extends AppCompatActivity {
                             messages.add(message);
                         }
                     }
-                    arrayAdapter = new ArrayAdapter(ChatActivity.this , android.R.layout.simple_list_item_1,messages);
+                    arrayAdapter = new ArrayAdapter(Chat.this , android.R.layout.simple_list_item_1,messages);
                     chatListView.setAdapter(arrayAdapter);
                 }
             }

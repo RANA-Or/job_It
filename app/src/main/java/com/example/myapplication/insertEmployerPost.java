@@ -67,7 +67,7 @@ public class insertEmployerPost extends AppCompatActivity {
         job_desc = findViewById(R.id.insert_job_desc);
         job_date = findViewById(R.id.insert_job_date);
         job_salary = findViewById(R.id.insert_job_salary);
-        job_email = findViewById(R.id.insert_job_salary);
+        job_email = findViewById(R.id.insert_job_email);
         job_location = findViewById(R.id.insert_job_place);
         job_contact_name = findViewById(R.id.insert_job_conName);
         button_post_job = findViewById(R.id.new_post_btn);
