@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    android:elevation="5dp"
+    android:layout_margin="10dp"
+    tools:context=".detailedJobData"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="87dp"
+        android:layout_gravity="center"
+        android:src="@drawable/jobit3" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="412dp">
+
+
+        <RelativeLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="436dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/job_details_skills3"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="270dp"
+                android:layout_marginBottom="109dp"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:maxLines="5"
+                android:padding="10dp"
+                android:text="Email:"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_details_skills4"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="260dp"
+                android:layout_marginBottom="62dp"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:maxLines="5"
+                android:padding="10dp"
+                android:text="Description:"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/job_details_job_date"
+                android:layout_width="262dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="153dp"
+                android:background="@drawable/round_borded"
+                android:maxLines="5"
+                android:padding="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_details_salary"
+                android:layout_width="261dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="200dp"
+                android:background="@drawable/round_borded"
+                android:padding="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_detail_title"
+                android:layout_width="255dp"
+                android:layout_height="39dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/round_borded"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="257dp"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:padding="10dp"
+                android:text="Job Title:"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_details_date_board"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/job_details_location"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/round_borded"
+                android:padding="10dp"
+                android:text="12 Dec ,2021"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="#FF3B0B51"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/job_details_location"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="259dp"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:padding="10dp"
+                android:text="Date:"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_details_location"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="54dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/round_borded"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="54dp"
+                android:layout_marginEnd="4dp"
+                android:layout_toStartOf="@+id/job_details_location"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:text="Location:"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_details_desc"
+                android:layout_width="259dp"
+                android:layout_height="77dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="27dp"
+
+                android:maxLines="3"
+                android:padding="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/job_details_salary"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="267dp"
+                android:layout_marginBottom="153dp"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:maxLines="5"
+                android:padding="10dp"
+                android:text="job date:"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="119dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="269dp"
+                android:layout_marginBottom="202dp"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:padding="10dp"
+                android:text="Salary:"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_details_contact_name"
+                android:layout_width="143dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="147dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/round_borded"
+                android:maxLines="6"
+                android:padding="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="146dp"
+                android:layout_marginEnd="147dp"
+                android:background="@drawable/round_borded"
+                android:fontFamily="@font/gabriela"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:text="Contact member's name:"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/job_details_email"
+                android:layout_width="262dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="286dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/round_borded"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <Button
+        android:id="@+id/button_enter_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:background="@drawable/job_post_button"
+        android:text="Chat With Me Now!"
+        android:textAllCaps="false"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/white" />
+
+</LinearLayout>
