@@ -110,6 +110,7 @@ public class Chat extends AppCompatActivity {
 
                         }
                     });
+                    //lkk
 
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(Chat.this , "My notify");
                     builder.setContentTitle("JobIt");
