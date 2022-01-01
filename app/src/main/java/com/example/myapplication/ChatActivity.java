@@ -48,7 +48,7 @@ public class ChatActivity extends AppCompatActivity {
     Map<FirebaseUser, Map<String , Object> > messagesData;
     static int count ;
     static int counter = 1;
-    boolean flag = false;//
+    boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
